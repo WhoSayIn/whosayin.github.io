@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Camperstraat 44-2 | Amsterdam Apartment for Rent</title>
+  <meta name="description"
+    content="Modern 67 m² apartment with front and rear balconies, basement storage, and light-filled living spaces in Amsterdam's Oosterparkbuurt. Rent €2,200 per month plus one-month deposit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --color-bg: #f6f7f8;
+      --color-surface: #ffffff;
+      --color-text: #1f2933;
+      --color-muted: #4b5563;
+      --color-accent: #e27d3a;
+      --color-border: #e5e7eb;
+      --max-width: 1100px;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    .lightbox-trigger {
+      cursor: zoom-in;
+    }
+
+    .lightbox-trigger:focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 4px;
+    }
+
+    header,
+    main,
+    footer {
+      width: 100%;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      gap: 72px;
+      padding: 32px 20px 64px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      gap: 36px;
+      align-items: center;
+      background-color: var(--color-surface);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero__media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero__eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 3.4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .hero__summary {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--color-muted);
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+    }
+
+    .stat {
+      background-color: #f1f3f5;
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stat__label {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .stat__value {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      font-weight: 600;
+      border-radius: 999px;
+      background: var(--color-accent);
+      color: #ffffff;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      width: fit-content;
+    }
+
+    .cta:hover,
+    .cta:focus {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(226, 125, 58, 0.32);
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      background-color: var(--color-surface);
+      padding: 40px 32px;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    .section__headline {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .section__lede {
+      margin: 0;
+      color: var(--color-muted);
+    }
+
+    .details-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .details-card {
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .details-card strong {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+    }
+
+    .details-card p {
+      margin: 0;
+    }
+
+    .features {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .features li {
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      background: #f9fafb;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .gallery figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gallery figcaption {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+    }
+
+    .floor-plan {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: start;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      background-color: rgba(15, 23, 42, 0.75);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 1000;
+    }
+
+    .lightbox--active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .lightbox__overlay {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: zoom-out;
+    }
+
+    .lightbox__content {
+      position: relative;
+      margin: 0;
+      max-width: min(960px, 90vw);
+      max-height: min(90vh, 720px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .lightbox__content img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+    }
+
+    .lightbox__content figcaption {
+      color: #f8fafc;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      border: 0;
+      padding: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.65);
+      color: #f8fafc;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .lightbox__close:hover,
+    .lightbox__close:focus-visible {
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .map {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      background-color: var(--color-surface);
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      display: block;
+    }
+
+    .map__actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(15, 23, 42, 0.035);
+    }
+
+    .map__link {
+      color: var(--color-accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .map__link:hover,
+    .map__link:focus-visible {
+      text-decoration: underline;
+    }
+
+    .contact {
+      text-align: center;
+      background: #111827;
+      color: #ffffff;
+      padding: 48px 32px;
+      border-radius: var(--radius);
+    }
+
+    .contact h2 {
+      margin: 0 0 16px;
+      font-size: 1.9rem;
+    }
+
+    .contact p {
+      margin: 0 0 24px;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .contact a {
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.36);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 24px;
+      }
+
+      .section {
+        padding: 32px 24px;
+      }
+
+      .map iframe {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero__media {
+        order: -1;
+      }
+
+      .map iframe {
+        height: 300px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page container">
+    <header class="hero">
+      <div class="hero__content">
+        <span class="hero__eyebrow">For Rent · Oosterparkbuurt, Amsterdam</span>
+        <h1>Camperstraat 44-2</h1>
+        <p class="hero__summary">Bright 67 m² second-floor apartment with sunny front and rear balconies, thoughtfully
+          updated interiors, and private basement storage in one of Amsterdam&apos;s most sought-after neighborhoods.
+          Ideal for couples or up to two roommates. Fully furnished with a washing machine, dishwasher, 55&quot; 4K TV,
+          robot vacuum cleaner, and curated pieces throughout.</p>
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__label">Monthly rent</span>
+            <span class="stat__value">€2,250</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Deposit</span>
+            <span class="stat__value">1 month</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Availability</span>
+            <span class="stat__value">From December 2025 (flexible)</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Size</span>
+            <span class="stat__value">67 m²</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Outdoor space</span>
+            <span class="stat__value">Front & rear balconies</span>
+          </div>
+        </div>
+        <a class="cta" href="tel:+31655920687">Call +31 6 55 92 06 87</a>
+      </div>
+      <div class="hero__media">
+        <img class="lightbox-trigger" src="originals/livingroom_1.jpeg"
+          alt="Sunlit living room with large windows at Camperstraat 44-2" role="button" tabindex="0"
+          aria-haspopup="dialog">
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2 class="section__headline">City living with calm, connected comfort</h2>
+        <p class="section__lede">Set along Camperstraat in the heart of Oosterparkbuurt, this top-level home pairs
+          Amsterdam charm with modern convenience. An airy floor plan flows from a welcoming hallway into an open living
+          and dining space that steps onto the street-facing balcony for morning sun. The kitchen and bedrooms extend to
+          the garden-facing rear balcony, soaking up afternoon light and leafy views. Both secondary bedrooms easily
+          turn
+          into quiet home offices without sacrificing overnight guest space.</p>
+        <div class="details-grid">
+          <div class="details-card">
+            <strong>Layout</strong>
+            <p>Generous living room, separate kitchen, two full-size bedrooms plus an additional flexible room ideal for
+              a study or guest space.</p>
+          </div>
+          <div class="details-card">
+            <strong>Storage</strong>
+            <p>Private storage unit in the basement keeps seasonal items and bikes neatly tucked away.</p>
+          </div>
+          <div class="details-card">
+            <strong>Furnishings</strong>
+            <p>Move-in ready with essentials including a washing machine, dishwasher, 55&quot; 4K TV, and robot vacuum
+              cleaner.</p>
+          </div>
+          <div class="details-card">
+            <strong>Outdoor</strong>
+            <p>Dual balconies deliver sun throughout the day—street-facing for city views and a tranquil garden-facing
+              retreat.</p>
+          </div>
+          <div class="details-card">
+            <strong>Neighborhood</strong>
+            <p>Albert Heijn supermarket is a one-minute stroll, and Michelin restaurant-café 4850 sits just around the
+              corner.</p>
+            <p>Reach Oosterpark in three minutes, hop on Tram 3 within 30 seconds, walk six to seven minutes to the
+              Wibautstraat metro, or cycle to Amsterdam Centraal in ten.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__headline">Steps from everything in Oosterparkbuurt</h2>
+        <p class="section__lede">Camperstraat 44-2 lies moments from Oosterpark, top cafés, and tram connections,
+          keeping daily errands and weekend plans within easy reach.</p>
+        <div class="map">
+          <iframe
+            src="https://maps.google.com/maps?q=Camperstraat%2044-2%20Amsterdam&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" title="Map showing Camperstraat 44-2 in Amsterdam"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map__actions">
+            <a class="map__link" href="https://maps.google.com/?q=Camperstraat+44-2,+Amsterdam" target="_blank"
+              rel="noopener">Open in Google Maps</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__headline">Apartment details</h2>
+        <p class="section__lede">Carefully maintained finishes keep the home move-in ready while preserving classic
+          period features.</p>
+        <ul class="features">
+          <li>Light oak floors throughout the living spaces</li>
+          <li>Fully equipped kitchen with gas cooktop and integrated storage</li>
+          <li>Primary bedroom with floor-to-ceiling wardrobes</li>
+          <li>Second bedroom overlooking the quiet courtyard</li>
+          <li>Dedicated home office or nursery with balcony access</li>
+          <li>Modern bathroom with walk-in shower and full-height tiling</li>
+          <li>Separate WC off the hallway for added convenience</li>
+          <li>Energy-efficient double glazing, central heating, and fiber-optic internet (Energy Label C)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 class="section__headline">Spaces you&apos;ll love</h2>
+        <p class="section__lede">A visual tour of the living areas, kitchen, bedrooms, and relaxing outdoor spaces.</p>
+        <div class="gallery">
+          <figure>
+            <img class="lightbox-trigger" src="originals/livingroom_2.jpeg"
+              alt="Living room with sofa and large windows leading to the balcony" role="button" tabindex="0"
+              aria-haspopup="dialog">
+            <figcaption>Living room with street views and soft morning light.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/livingroom_1.jpeg"
+              alt="Living room facing Camperstraat with access to the front balcony" role="button" tabindex="0"
+              aria-haspopup="dialog">
+            <figcaption>Front balcony walk-out brings morning light into the living room.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/balcony_front.jpeg"
+              alt="Front balcony overlooking Camperstraat" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Street-side balcony catches the morning sun.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room1_1.jpeg"
+              alt="Primary bedroom with wardrobe and balcony access" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Primary bedroom opens directly onto the rear balcony.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room1_2.jpeg"
+              alt="Primary bedroom with double wardrobe and artwork" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Primary bedroom alternate angle highlighting the built-in wardrobes.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room1_3.jpeg"
+              alt="Primary bedroom corner with desk and balcony door" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Corner of the primary bedroom with the built-in wardrobe door open.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room2_1.jpeg"
+              alt="Second bedroom with large window and storage" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Second bedroom overlooking the quiet inner gardens.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room2_2.jpeg" alt="Second bedroom wardrobe and seating area"
+              role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Alternate view of the second bedroom currently being used as an office.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room2_3.jpeg" alt="Second bedroom desk facing the window"
+              role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Second bedroom also has a walk-in wardrobe.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room2_4.jpeg" alt="Second bedroom storage and doorway view"
+              role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Another view from the second bedroom.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room2_5.jpeg" alt="Second bedroom daybed with cushions"
+              role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>A view in the second bedroom towards the bookshelves.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room3_1.jpeg"
+              alt="Third bedroom or home office with rear balcony access" role="button" tabindex="0"
+              aria-haspopup="dialog">
+            <figcaption>Flexible third room ready for a home office, guest space, or a bedroom. Has direct access to the
+              front balcony.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/room3_2.jpeg" alt="Third room with workspace and shelving"
+              role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Additional third-room angle with workspace.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/kitchen_1.jpeg"
+              alt="Kitchen with white cabinetry and built-in appliances" role="button" tabindex="0"
+              aria-haspopup="dialog">
+            <figcaption>Efficient kitchen layout with everything within reach.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/kitchen_2.jpeg"
+              alt="Kitchen detail with open shelving and dining nook" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Second kitchen view shows the wall shelves as extra storage.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/bathroom1.jpeg"
+              alt="Modern bathroom with walk-in shower and sink vanity" role="button" tabindex="0"
+              aria-haspopup="dialog">
+            <figcaption>Bathroom with walk-in shower and sleek tiling.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/bathroom2.jpeg"
+              alt="Bathroom detail with rain shower and towel warmer" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Rain shower detail with towel warmer keeps the bathroom warm.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/balcony_rear_1.jpeg" alt="Rear balcony with seating and plants"
+              role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Rear balcony—private retreat for relaxing evenings.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/balcony_rear2.jpeg"
+              alt="Rear balcony view toward shared gardens" role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Second rear-balcony perspective looking out on the leafy gardens.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/hall.jpeg" alt="Entry hallway with storage and access to rooms"
+              role="button" tabindex="0" aria-haspopup="dialog">
+            <figcaption>Central hallway that connects each room and keeps clutter hidden.</figcaption>
+          </figure>
+          <figure>
+            <img class="lightbox-trigger" src="originals/toilet.jpeg" alt="Separate WC with sink" role="button"
+              tabindex="0" aria-haspopup="dialog">
+            <figcaption>Separate WC off the hallway with updated fixtures.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__headline">Floor plan &amp; flow</h2>
+        <div class="floor-plan">
+          <img class="lightbox-trigger" src="originals/floor_plan.jpeg"
+            alt="Floor plan of Camperstraat 44-2 with dual balconies and storage access" role="button" tabindex="0"
+            aria-haspopup="dialog">
+          <div>
+            <p>The 67 m² layout blends open-plan living with clearly defined private rooms. Entry starts at a central
+              hallway, with the living and dining area opening to the street-side balcony for coffee in the morning sun.
+              Bedrooms line both sides of the home, allowing for flexible uses such as a guest room, office, or dressing
+              room. The kitchen sits toward the rear with direct access to the garden-facing balcony that glows in the
+              afternoon.</p>
+            <p>Basement storage is included with the lease, offering ample room for bikes, luggage, and seasonal gear.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="contact">
+      <h2>Ready to view Camperstraat 44-2?</h2>
+      <p>Call to schedule a private viewing or ask anything about the apartment, neighborhood, or lease terms.</p>
+      <a href="tel:+31655920687">+31 6 55 92 06 87</a>
+    </section>
+
+    <footer>
+      © Camperstraat 44-2 · Oosterparkbuurt, Amsterdam
+    </footer>
+  </div>
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded image view" aria-hidden="true">
+    <button class="lightbox__overlay" type="button" aria-label="Close image preview"></button>
+    <figure class="lightbox__content">
+      <img src="" alt="">
+      <figcaption hidden></figcaption>
+      <button type="button" class="lightbox__close" aria-label="Close image preview">&times;</button>
+    </figure>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var triggers = document.querySelectorAll('.lightbox-trigger');
+      var lightbox = document.querySelector('.lightbox');
+
+      if (!triggers.length || !lightbox) {
+        return;
+      }
+
+      var overlay = lightbox.querySelector('.lightbox__overlay');
+      var lightboxImage = lightbox.querySelector('img');
+      var lightboxCaption = lightbox.querySelector('figcaption');
+      var closeButton = lightbox.querySelector('.lightbox__close');
+      var activeTrigger = null;
+
+      function getCaption(trigger) {
+        var custom = trigger.getAttribute('data-caption');
+        if (custom) {
+          return custom;
+        }
+        var figure = trigger.closest('figure');
+        if (figure) {
+          var figcaption = figure.querySelector('figcaption');
+          if (figcaption && figcaption.textContent) {
+            return figcaption.textContent.trim();
+          }
+        }
+        if (trigger.alt) {
+          return trigger.alt;
+        }
+        return '';
+      }
+
+      function openLightbox(trigger) {
+        var source = trigger.getAttribute('data-lightbox-src') || trigger.src;
+        var captionText = getCaption(trigger);
+
+        lightboxImage.src = source;
+        lightboxImage.alt = trigger.alt || captionText || '';
+
+        if (captionText) {
+          lightboxCaption.textContent = captionText;
+          lightboxCaption.hidden = false;
+        } else {
+          lightboxCaption.textContent = '';
+          lightboxCaption.hidden = true;
+        }
+
+        lightbox.classList.add('lightbox--active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        activeTrigger = trigger;
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('lightbox--active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        lightboxImage.src = '';
+        if (activeTrigger) {
+          activeTrigger.focus();
+          activeTrigger = null;
+        }
+      }
+
+      triggers.forEach(function (trigger) {
+        trigger.setAttribute('role', trigger.getAttribute('role') || 'button');
+        trigger.setAttribute('tabindex', trigger.getAttribute('tabindex') || '0');
+        trigger.setAttribute('aria-haspopup', trigger.getAttribute('aria-haspopup') || 'dialog');
+
+        trigger.addEventListener('click', function () {
+          openLightbox(trigger);
+        });
+
+        trigger.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openLightbox(trigger);
+          }
+        });
+      });
+
+      overlay.addEventListener('click', closeLightbox);
+      closeButton.addEventListener('click', closeLightbox);
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && lightbox.classList.contains('lightbox--active')) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
