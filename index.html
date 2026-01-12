@@ -1,46 +1,70 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Huseyin Keles</title>
-  <meta name="description" contents="Personal webpage of Huseyin Keles" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      text-align: center;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huseyin Keles</title>
+    <meta name="description" content="Personal webpage of Huseyin Keles. Connect with me on social media." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://huseyinkel.es/">
+    <meta property="og:title" content="Huseyin Keles">
+    <meta property="og:description" content="Personal webpage of Huseyin Keles. Connect with me on social media.">
+    <meta property="og:image" content="https://huseyinkel.es/assets/img/favicon.svg">
 
-    a {
-      color: #333;
-      margin: 10px;
-    }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://huseyinkel.es/">
+    <meta property="twitter:title" content="Huseyin Keles">
+    <meta property="twitter:description" content="Personal webpage of Huseyin Keles. Connect with me on social media.">
+    <meta property="twitter:image" content="https://huseyinkel.es/assets/img/favicon.svg">
 
-    @media only screen and (max-width: 600px) {
-
-      a,
-      p {
-        display: block;
-        font-size: 20px;
-      }
-    }
-  </style>
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
-  <h1>Hello World!</h1>
-  <div>
-    <p>Hi, this is Huseyin Keles. I'm available on the following links:</p>
-    <a href="https://www.linkedin.com/in/whosayin/">LinkedIn</a>
-    <a href="https://twitter.com/WhoSayIn">Twitter</a>
-    <a href="https://github.com/WhoSayIn">GitHub</a>
-    <a href="https://stackoverflow.com/users/148592/whosayin">StackOverflow</a>
-    <a href="https://news.ycombinator.com/user?id=huseyinkeles">HackerNews</a>
-    <a href="https://www.goodreads.com/user/show/4248876-huseyin-keles">Goodreads</a>
-    <a href="https://www.strava.com/athletes/5031885">Strava</a>
-  </div>
-</body>
+    <div class="container">
+        <div class="profile-card">
+            <h1>Huseyin Keles</h1>
+            <p class="bio">Hi, this is Huseyin Keles.<br>I'm available on the following links:</p>
+            
+            <div class="links">
+                <a href="https://www.linkedin.com/in/whosayin/" class="link-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/icons/linkedin.svg" class="link-icon" alt="LinkedIn">
+                    LinkedIn
+                </a>
+                <a href="https://twitter.com/WhoSayIn" class="link-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/icons/twitter.svg" class="link-icon" alt="Twitter">
+                    Twitter
+                </a>
+                <a href="https://github.com/WhoSayIn" class="link-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/icons/github.svg" class="link-icon" alt="GitHub">
+                    GitHub
+                </a>
+                <a href="https://stackoverflow.com/users/148592/whosayin" class="link-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/icons/stackoverflow.svg" class="link-icon" alt="StackOverflow">
+                    StackOverflow
+                </a>
+                <a href="https://news.ycombinator.com/user?id=huseyinkeles" class="link-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/icons/hackernews.svg" class="link-icon" alt="HackerNews">
+                    HackerNews
+                </a>
+                <a href="https://www.goodreads.com/user/show/4248876-huseyin-keles" class="link-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/icons/goodreads.svg" class="link-icon" alt="Goodreads">
+                    Goodreads
+                </a>
+                <a href="https://www.strava.com/athletes/5031885" class="link-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/icons/strava.svg" class="link-icon" alt="Strava">
+                    Strava
+                </a>
+            </div>
 
+            <div class="footer">
+                &copy; <span id="year"></span> Huseyin Keles
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
 </html>
